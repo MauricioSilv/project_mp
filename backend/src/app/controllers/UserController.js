@@ -17,6 +17,10 @@ class UserController {
       is_admin,
     });
   }
+
+  async update(req, res) {
+    return res.json({ ok: true });
+  }
 }
 
 export default new UserController();
