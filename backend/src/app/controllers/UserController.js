@@ -2,6 +2,10 @@ import User from '../models/User';
 
 class UserController {
   async store(req, res) {
+    if (req.isAdmin === false) {
+      return res.status(400).json({ error: 'Is not admin' });
+    }
+
     const userExists = await User.findOne({ where: { email: req.body.email } });
 
     if (userExists) {
@@ -19,6 +23,13 @@ class UserController {
   }
 
   async update(req, res) {
+    const { email, oldPassword } = req.body;
+
+    if (req.isAdmin === false) {
+      return res.status(400).json({ error: 'Is not admin' });
+    }
+    const user = await User.findByPk(req.userId);
+
     return res.json({ ok: true });
   }
 }
