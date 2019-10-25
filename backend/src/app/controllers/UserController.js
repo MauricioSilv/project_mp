@@ -2,6 +2,19 @@ import * as Yup from 'yup';
 import User from '../models/User';
 
 class UserController {
+  async index(req, res) {
+    if (req.isAdmin === false) {
+      return res.status(400).json({ error: 'Not authorized' });
+    }
+
+    const users = await User.findAll({
+      where: { is_admin: false },
+      attributes: ['id', 'name', 'email'],
+    });
+
+    return res.json(users);
+  }
+
   async store(req, res) {
     const schema = Yup.object().shape({
       name: Yup.string().required(),
@@ -18,7 +31,7 @@ class UserController {
     }
 
     if (req.isAdmin === false) {
-      return res.status(400).json({ error: 'Is not admin' });
+      return res.status(400).json({ error: 'Not authorized' });
     }
 
     const userExists = await User.findOne({ where: { email: req.body.email } });
@@ -61,7 +74,7 @@ class UserController {
     const user = await User.findByPk(id);
 
     if (req.isAdmin !== true) {
-      return res.status(400).json({ error: 'Is not admin' });
+      return res.status(400).json({ error: 'Not authorized' });
     }
 
     if (email !== user.email) {
@@ -86,6 +99,22 @@ class UserController {
       email,
       is_admin,
     });
+  }
+
+  async destroy(req, res) {
+    if (req.isAdmin !== true) {
+      return res.status(400).json({ error: 'Not authorized' });
+    }
+    const { idUser } = req.params;
+    const findUser = await User.findByPk(idUser);
+
+    if (!findUser) {
+      return res.status(400).json({ error: 'User not found' });
+    }
+
+    await findUser.destroy();
+
+    return res.send();
   }
 }
 
