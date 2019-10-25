@@ -14,5 +14,7 @@ routes.use(authMiddleware);
 routes.put('/users', UserController.update);
 routes.get('/types', EquipTypeController.index);
 routes.post('/types', EquipTypeController.store);
+routes.put('/types/:idType', EquipTypeController.update);
+routes.delete('/types/:idType', EquipTypeController.destroy);
 
 export default routes;
