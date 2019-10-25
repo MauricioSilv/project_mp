@@ -23,7 +23,7 @@ class Equipment extends Model {
   }
 
   static associate(models) {
-    this.belongsTo(models.Equip_type, { foreignKey: 'id_type' });
+    this.belongsTo(models.TypeEquipment, { foreignKey: 'id_type' });
     this.hasMany(models.File, { foreignKey: 'id_file' });
   }
 }

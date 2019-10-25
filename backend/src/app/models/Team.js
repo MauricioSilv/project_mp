@@ -5,7 +5,6 @@ class Team extends Model {
     super.init(
       {
         name: Sequelize.STRING,
-        id_users: Sequelize.INTEGER,
         id_equipments: Sequelize.INTEGER,
       },
       {
@@ -17,7 +16,11 @@ class Team extends Model {
   }
 
   static associate(models) {
-    this.belongsToMany(models.User, { foreignKey: 'id_users' });
+    this.belongsToMany(models.User, {
+      through: 'UsersTeam',
+      foreignKey: 'id_users',
+      as: 'teamUsers',
+    });
     this.hasMany(models.Equipment, { foreignKey: 'id_equipments' });
   }
 }

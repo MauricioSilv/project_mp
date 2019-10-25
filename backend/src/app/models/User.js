@@ -25,6 +25,14 @@ class User extends Model {
     return this;
   }
 
+  static associate(models) {
+    this.belongsToMany(models.Team, {
+      through: 'UsersTeam',
+      foreignKey: 'userId',
+      as: 'usersTeam',
+    });
+  }
+
   checkPassword(password) {
     return bcrypt.compare(password, this.password_hash);
   }
