@@ -23,6 +23,7 @@ routes.post('/types', EquipTypeController.store);
 routes.put('/types/:idType', EquipTypeController.update);
 routes.delete('/types/:idType', EquipTypeController.destroy);
 routes.post('/files', uploads.single('file'), FileController.store);
+routes.get('/equipments', EquipmentController.index);
 routes.post('/equipments', EquipmentController.store);
 
 export default routes;

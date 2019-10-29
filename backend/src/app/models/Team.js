@@ -21,7 +21,7 @@ class Team extends Model {
       foreignKey: 'id_users',
       as: 'teamUsers',
     });
-    this.hasMany(models.Equipment, { foreignKey: 'id_equipments' });
+    this.belongsTo(models.Equipment, { foreignKey: 'id_equipments' });
   }
 }
 export default Team;

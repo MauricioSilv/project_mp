@@ -11,8 +11,6 @@ class Equipment extends Model {
         malfunction: Sequelize.STRING,
         latitude: Sequelize.STRING,
         longitude: Sequelize.STRING,
-        id_type: Sequelize.INTEGER,
-        id_file: Sequelize.INTEGER,
       },
       {
         sequelize,
@@ -23,8 +21,12 @@ class Equipment extends Model {
   }
 
   static associate(models) {
-    this.belongsTo(models.TypeEquipment, { foreignKey: 'id_type' });
-    this.hasMany(models.File, { foreignKey: 'id_file' });
+    this.hasMany(models.Team);
+    this.belongsTo(models.TypeEquipment, {
+      foreignKey: 'id_type',
+      as: 'types',
+    });
+    this.belongsTo(models.File, { foreignKey: 'id_file', as: 'image' });
   }
 }
 export default Equipment;
