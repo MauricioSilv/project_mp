@@ -14,7 +14,7 @@ module.exports = {
       id_equipments: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references: { model: 'equipments', key: 'id' },
+        references: { model: 'equipment', key: 'id' },
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
       },

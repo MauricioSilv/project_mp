@@ -5,6 +5,7 @@ import UserController from './app/controllers/UserController';
 import SessionController from './app/controllers/SessionController';
 import EquipTypeController from './app/controllers/EquipTypeController';
 import FileController from './app/controllers/FileController';
+import EquipmentController from './app/controllers/EquipmentController';
 import authMiddleware from './app/middlewares/auth';
 
 const routes = new Router();
@@ -22,5 +23,6 @@ routes.post('/types', EquipTypeController.store);
 routes.put('/types/:idType', EquipTypeController.update);
 routes.delete('/types/:idType', EquipTypeController.destroy);
 routes.post('/files', uploads.single('file'), FileController.store);
+routes.post('/equipments', EquipmentController.store);
 
 export default routes;
