@@ -5,7 +5,6 @@ class Team extends Model {
     super.init(
       {
         name: Sequelize.STRING,
-        id_equipments: Sequelize.INTEGER,
       },
       {
         sequelize,
@@ -16,12 +15,14 @@ class Team extends Model {
   }
 
   static associate(models) {
+    this.hasMany(models.Operation);
+    this.hasMany(models.Phase);
+    this.hasMany(models.Equipment);
     this.belongsToMany(models.User, {
-      through: 'UsersTeam',
-      foreignKey: 'id_users',
-      as: 'teamUsers',
+      through: 'UserTeams',
+      foreignKey: 'team_id',
+      as: 'users',
     });
-    this.belongsTo(models.Equipment, { foreignKey: 'id_equipments' });
   }
 }
 export default Team;

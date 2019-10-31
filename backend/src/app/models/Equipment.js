@@ -21,12 +21,13 @@ class Equipment extends Model {
   }
 
   static associate(models) {
-    this.hasMany(models.Team);
+    this.hasMany(models.Phase);
     this.belongsTo(models.TypeEquipment, {
       foreignKey: 'id_type',
       as: 'types',
     });
     this.belongsTo(models.File, { foreignKey: 'id_file', as: 'image' });
+    this.belongsTo(models.Team, { foreignKey: 'team_id', as: 'EquipTeam' });
   }
 }
 export default Equipment;

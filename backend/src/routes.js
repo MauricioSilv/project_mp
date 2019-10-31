@@ -6,6 +6,7 @@ import SessionController from './app/controllers/SessionController';
 import EquipTypeController from './app/controllers/EquipTypeController';
 import FileController from './app/controllers/FileController';
 import EquipmentController from './app/controllers/EquipmentController';
+import TeamController from './app/controllers/TeamController';
 import authMiddleware from './app/middlewares/auth';
 
 const routes = new Router();
@@ -25,5 +26,7 @@ routes.delete('/types/:idType', EquipTypeController.destroy);
 routes.post('/files', uploads.single('file'), FileController.store);
 routes.get('/equipments', EquipmentController.index);
 routes.post('/equipments', EquipmentController.store);
+routes.get('/teams', TeamController.index);
+routes.post('/teams', TeamController.store);
 
 export default routes;

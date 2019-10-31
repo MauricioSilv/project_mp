@@ -16,7 +16,8 @@ class Phase extends Model {
   }
 
   static associate(models) {
-    this.hasMany(models.Team, { foreignKey: 'id_teams' });
+    this.hasMany(models.Operation);
+    this.belongsTo(models.Team, { foreignKey: 'id_teams' });
   }
 }
 export default Phase;

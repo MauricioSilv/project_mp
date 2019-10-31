@@ -17,8 +17,8 @@ class Operation extends Model {
   }
 
   static associate(models) {
-    this.hasMany(models.Team, { foreignKey: 'id_team' });
-    this.hasMany(models.Phase, { foreignKey: 'id_phases' });
+    this.belongsTo(models.Team, { foreignKey: 'id_team' });
+    this.belongsTo(models.Phase, { foreignKey: 'id_phases' });
   }
 }
 export default Operation;
