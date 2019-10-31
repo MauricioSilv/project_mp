@@ -17,7 +17,6 @@ class Team extends Model {
   static associate(models) {
     this.hasMany(models.Operation);
     this.hasMany(models.Phase);
-    this.hasMany(models.Equipment);
     this.belongsToMany(models.User, {
       through: 'UserTeams',
       foreignKey: 'team_id',
