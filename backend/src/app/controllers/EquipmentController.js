@@ -35,31 +35,23 @@ class EquipmentController {
       return res.status(400).json({ error: 'Not authorized' });
     }
 
-    const {
-      name,
-      num_serie,
-      description,
-      color_equipment,
-      malfunction,
-      latitude,
-      longitude,
-      id_type,
-      id_file,
-      team_id,
-    } = await Equipment.create(req.body);
+    const newEquipments = await Equipment.create(req.body);
 
-    return res.json({
-      name,
-      num_serie,
-      description,
-      color_equipment,
-      malfunction,
-      latitude,
-      longitude,
-      id_file,
-      id_type,
-      team_id,
-    });
+    return res.json(newEquipments);
+  }
+
+  async update(req, res) {
+    const { idEquip } = req.params;
+
+    if (req.isAdmin !== false) {
+      return res.status(400).json({ error: 'Not authorized' });
+    }
+
+    const findEquipment = await Equipment.findByPk(idEquip);
+
+    const equipment = await findEquipment.update(req.body);
+
+    return res.json(equipment);
   }
 }
 

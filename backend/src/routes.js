@@ -26,6 +26,7 @@ routes.delete('/types/:idType', EquipTypeController.destroy);
 routes.post('/files', uploads.single('file'), FileController.store);
 routes.get('/equipments', EquipmentController.index);
 routes.post('/equipments', EquipmentController.store);
+routes.put('/equipments/:idEquip', EquipmentController.update);
 routes.get('/teams', TeamController.index);
 routes.post('/teams', TeamController.store);
 
