@@ -7,6 +7,7 @@ import EquipTypeController from './app/controllers/EquipTypeController';
 import FileController from './app/controllers/FileController';
 import EquipmentController from './app/controllers/EquipmentController';
 import TeamController from './app/controllers/TeamController';
+import PhaseController from './app/controllers/PhaseController';
 import authMiddleware from './app/middlewares/auth';
 
 const routes = new Router();
@@ -19,15 +20,21 @@ routes.use(authMiddleware);
 routes.get('/users', UserController.index);
 routes.put('/users', UserController.update);
 routes.delete('/users/:idUser', UserController.destroy);
+
 routes.get('/types', EquipTypeController.index);
 routes.post('/types', EquipTypeController.store);
 routes.put('/types/:idType', EquipTypeController.update);
 routes.delete('/types/:idType', EquipTypeController.destroy);
+
 routes.post('/files', uploads.single('file'), FileController.store);
+
 routes.get('/equipments', EquipmentController.index);
 routes.post('/equipments', EquipmentController.store);
 routes.put('/equipments/:idEquip', EquipmentController.update);
+
 routes.get('/teams', TeamController.index);
 routes.post('/teams', TeamController.store);
+
+routes.post('/phases', PhaseController.store);
 
 export default routes;
