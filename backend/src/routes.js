@@ -35,6 +35,7 @@ routes.put('/equipments/:idEquip', EquipmentController.update);
 routes.get('/teams', TeamController.index);
 routes.post('/teams', TeamController.store);
 
+routes.get('/phases', PhaseController.index);
 routes.post('/phases', PhaseController.store);
 
 export default routes;

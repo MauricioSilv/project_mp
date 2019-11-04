@@ -5,7 +5,6 @@ class Phase extends Model {
     super.init(
       {
         name: Sequelize.STRING,
-        id_teams: Sequelize.INTEGER,
       },
       {
         sequelize,
@@ -17,7 +16,7 @@ class Phase extends Model {
 
   static associate(models) {
     this.hasMany(models.Operation);
-    this.belongsTo(models.Team, { foreignKey: 'id_teams' });
+    this.belongsTo(models.Team, { as: 'phasesTeam', foreignKey: 'id_teams' });
   }
 }
 export default Phase;

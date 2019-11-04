@@ -10,7 +10,7 @@ import Equipment from '../app/models/Equipment';
 
 import databaseConfig from '../config/database';
 
-const models = [User, File, TypeEquipment, Equipment, Operation, Phase, Team];
+const models = [User, File, TypeEquipment, Equipment, Team, Operation, Phase];
 
 class Database {
   constructor() {

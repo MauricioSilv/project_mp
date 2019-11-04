@@ -21,7 +21,6 @@ class Equipment extends Model {
   }
 
   static associate(models) {
-    this.hasMany(models.Phase);
     this.belongsTo(models.TypeEquipment, {
       foreignKey: 'id_type',
       as: 'types',
