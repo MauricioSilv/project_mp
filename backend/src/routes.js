@@ -38,5 +38,6 @@ routes.post('/teams', TeamController.store);
 routes.get('/phases', PhaseController.index);
 routes.post('/phases', PhaseController.store);
 routes.put('/phases/:idPhase', PhaseController.update);
+routes.delete('/phases/:idPhase', PhaseController.destroy);
 
 export default routes;
