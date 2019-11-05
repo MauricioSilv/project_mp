@@ -12,7 +12,7 @@ class TeamController {
         {
           model: User,
           as: 'users',
-          attributes: ['id', 'name', 'email', 'is_admin'],
+          attributes: ['id', 'name', 'email'],
           through: { attributes: [] },
         },
       ],
@@ -33,6 +33,23 @@ class TeamController {
     if (users && users.length > 0) {
       team.setUsers(users);
     }
+    return res.json(team);
+  }
+
+  async update(req, res) {
+    const { idTeam } = req.params;
+    const { users, ...data } = req.body;
+    const team = await Team.findByPk(idTeam);
+    if (req.isAdmin !== true) {
+      return res.status(400).json({ error: 'Is not admin' });
+    }
+
+    await team.update(data);
+
+    if (users && users.length > 0) {
+      team.setUsers(users);
+    }
+
     return res.json(team);
   }
 }
