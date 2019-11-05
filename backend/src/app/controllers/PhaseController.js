@@ -26,6 +26,19 @@ class PhaseController {
 
     return res.json(newPhase);
   }
+
+  async update(req, res) {
+    const { idPhase } = req.params;
+    if (req.isAdmin !== true) {
+      return res.status(400).json({ error: 'Is not admin' });
+    }
+
+    const findPhase = await Phase.findByPk(idPhase);
+
+    const phases = await findPhase.update(req.body);
+
+    return res.json(phases);
+  }
 }
 
 export default new PhaseController();

@@ -37,5 +37,6 @@ routes.post('/teams', TeamController.store);
 
 routes.get('/phases', PhaseController.index);
 routes.post('/phases', PhaseController.store);
+routes.put('/phases/:idPhase', PhaseController.update);
 
 export default routes;
