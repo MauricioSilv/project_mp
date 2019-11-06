@@ -42,6 +42,7 @@ routes.post('/phases', PhaseController.store);
 routes.put('/phases/:idPhase', PhaseController.update);
 routes.delete('/phases/:idPhase', PhaseController.destroy);
 
+routes.get('/operations', OperationController.index);
 routes.post('/operations', OperationController.store);
 
 export default routes;

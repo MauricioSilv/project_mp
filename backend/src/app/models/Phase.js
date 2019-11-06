@@ -15,7 +15,6 @@ class Phase extends Model {
   }
 
   static associate(models) {
-    this.hasMany(models.Operation);
     this.belongsTo(models.Team, { as: 'phasesTeam', foreignKey: 'id_teams' });
   }
 }

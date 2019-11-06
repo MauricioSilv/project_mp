@@ -5,8 +5,6 @@ class Operation extends Model {
     super.init(
       {
         name: Sequelize.STRING,
-        id_team: Sequelize.INTEGER,
-        id_phase: Sequelize.INTEGER,
       },
       {
         sequelize,
@@ -17,8 +15,8 @@ class Operation extends Model {
   }
 
   static associate(models) {
-    this.belongsTo(models.Team, { foreignKey: 'id_team' });
-    this.belongsTo(models.Phase, { foreignKey: 'id_phase' });
+    this.belongsTo(models.Team, { foreignKey: 'id_team', as: 'OpTeam' });
+    this.belongsTo(models.Phase, { foreignKey: 'id_phase', as: 'OpPhase' });
   }
 }
 export default Operation;
