@@ -40,6 +40,31 @@ class OperationController {
 
     return res.json(operation);
   }
+
+  async update(req, res) {
+    const { idOp } = req.params;
+
+    if (req.isAdmin !== true) {
+      return res.status(400).json({ error: 'Is not admin' });
+    }
+
+    const findOperation = await Operation.findByPk(idOp);
+    const {
+      name,
+      id_team,
+      id_phase,
+      createdAt,
+      updatedAt,
+    } = await findOperation.update(req.body);
+
+    return res.json({
+      name,
+      id_team,
+      id_phase,
+      createdAt,
+      updatedAt,
+    });
+  }
 }
 
 export default new OperationController();
