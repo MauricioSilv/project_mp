@@ -6,7 +6,7 @@ class Operation extends Model {
       {
         name: Sequelize.STRING,
         id_team: Sequelize.INTEGER,
-        id_phases: Sequelize.INTEGER,
+        id_phase: Sequelize.INTEGER,
       },
       {
         sequelize,
@@ -18,7 +18,7 @@ class Operation extends Model {
 
   static associate(models) {
     this.belongsTo(models.Team, { foreignKey: 'id_team' });
-    this.belongsTo(models.Phase, { foreignKey: 'id_phases' });
+    this.belongsTo(models.Phase, { foreignKey: 'id_phase' });
   }
 }
 export default Operation;

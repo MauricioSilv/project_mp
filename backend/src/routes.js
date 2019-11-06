@@ -8,6 +8,7 @@ import FileController from './app/controllers/FileController';
 import EquipmentController from './app/controllers/EquipmentController';
 import TeamController from './app/controllers/TeamController';
 import PhaseController from './app/controllers/PhaseController';
+import OperationController from './app/controllers/OperationController';
 import authMiddleware from './app/middlewares/auth';
 
 const routes = new Router();
@@ -40,5 +41,7 @@ routes.get('/phases', PhaseController.index);
 routes.post('/phases', PhaseController.store);
 routes.put('/phases/:idPhase', PhaseController.update);
 routes.delete('/phases/:idPhase', PhaseController.destroy);
+
+routes.post('/operations', OperationController.store);
 
 export default routes;
