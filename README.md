@@ -5,7 +5,7 @@
 * Clone this repository
 ```$ git clone https://github.com/MauricioSilv/project_mp.git```
 
-* I am using postgresql relational database in this project, more details `.env`
+* I am using postgresql relational database in this project, more details `.env.example`
        
 * Enter folder ``cd /backend`` and install dependencies
   run ``yarn``.
