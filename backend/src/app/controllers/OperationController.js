@@ -1,3 +1,4 @@
+import * as Yup from 'yup';
 import Operation from '../models/Operation';
 import Team from '../models/Team';
 import Phase from '../models/Phase';
@@ -28,6 +29,17 @@ class OperationController {
 
   async store(req, res) {
     const { name, id_team, id_phase } = req.body;
+    const schema = Yup.object().shape({
+      name: Yup.string()
+        .min(4)
+        .required(),
+      id_team: Yup.number().required(),
+      id_phase: Yup.number().required(),
+    });
+
+    if (!(await schema.isValid(req.body))) {
+      return res.status(400).json({ error: 'Validation fails' });
+    }
 
     if (req.isAdmin !== true) {
       return res.status(400).json({ error: 'Is not admin' });
@@ -43,27 +55,24 @@ class OperationController {
 
   async update(req, res) {
     const { idOp } = req.params;
+    const schema = Yup.object().shape({
+      name: Yup.string().min(4),
+      id_team: Yup.number(),
+      id_phase: Yup.number(),
+    });
+
+    if (!(await schema.isValid(req.body))) {
+      return res.status(400).json({ error: 'Validation fails' });
+    }
 
     if (req.isAdmin !== true) {
       return res.status(400).json({ error: 'Is not admin' });
     }
 
     const findOperation = await Operation.findByPk(idOp);
-    const {
-      name,
-      id_team,
-      id_phase,
-      createdAt,
-      updatedAt,
-    } = await findOperation.update(req.body);
+    const operations = await findOperation.update(req.body);
 
-    return res.json({
-      name,
-      id_team,
-      id_phase,
-      createdAt,
-      updatedAt,
-    });
+    return res.json(operations);
   }
 }
 
