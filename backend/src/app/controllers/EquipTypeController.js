@@ -57,18 +57,11 @@ class EquipTypeController {
 
   async destroy(req, res) {
     const { idType } = req.params;
-    const schema = Yup.object().shape({
-      name: Yup.string().min(3),
-    });
 
     const typeEquipment = await TypeEquipment.findByPk(idType);
 
     if (req.isAdmin !== true) {
       return res.status(400).json({ error: 'Is not admin' });
-    }
-
-    if (!schema.isValid(req.body)) {
-      return res.status(400).json({ error: 'Validation fails.' });
     }
 
     await typeEquipment.destroy();
