@@ -1,3 +1,4 @@
+import * as Yup from 'yup';
 import Phase from '../models/Phase';
 import Team from '../models/Team';
 
@@ -19,6 +20,17 @@ class PhaseController {
   }
 
   async store(req, res) {
+    const schema = Yup.object().shape({
+      name: Yup.string()
+        .min(4)
+        .required(),
+      id_teams: Yup.number().required(),
+    });
+
+    if (!(await schema.isValid(req.body))) {
+      return res.status(400).json({ error: 'Validation fails' });
+    }
+
     if (req.isAdmin !== true) {
       return res.status(400).json({ error: 'Is not admin' });
     }
@@ -29,6 +41,15 @@ class PhaseController {
 
   async update(req, res) {
     const { idPhase } = req.params;
+    const schema = Yup.object().shape({
+      name: Yup.string().min(4),
+      id_teams: Yup.number(),
+    });
+
+    if (!(await schema.isValid(req.body))) {
+      return res.status(400).json({ error: 'Validation fails' });
+    }
+
     if (req.isAdmin !== true) {
       return res.status(400).json({ error: 'Is not admin' });
     }
