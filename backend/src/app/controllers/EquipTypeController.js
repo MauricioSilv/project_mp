@@ -19,7 +19,7 @@ class EquipTypeController {
       return res.status(400).json({ error: 'Is not admin' });
     }
 
-    if (!schema.isValid(req.body)) {
+    if (!(await schema.isValid(req.body))) {
       return res.status(400).json({ error: 'Validation fails.' });
     }
 
@@ -43,7 +43,7 @@ class EquipTypeController {
       return res.status(400).json({ error: 'Is not admin' });
     }
 
-    if (!schema.isValid(req.body)) {
+    if (!(await schema.isValid(req.body))) {
       return res.status(400).json({ error: 'Validation fails.' });
     }
 
