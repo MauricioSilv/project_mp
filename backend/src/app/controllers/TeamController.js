@@ -1,3 +1,4 @@
+import * as Yup from 'yup';
 import Team from '../models/Team';
 import User from '../models/User';
 
@@ -23,6 +24,16 @@ class TeamController {
 
   async store(req, res) {
     const { users, ...data } = req.body;
+    const schema = Yup.object().shape({
+      name: Yup.string()
+        .min(4)
+        .required(),
+      users: Yup.array().required(),
+    });
+
+    if (!(await schema.isValid(req.body))) {
+      return res.status(400).json({ error: 'Validation fails' });
+    }
 
     if (req.isAdmin !== true) {
       return res.status(400).json({ error: 'Is not admin' });
@@ -39,10 +50,19 @@ class TeamController {
   async update(req, res) {
     const { idTeam } = req.params;
     const { users, ...data } = req.body;
-    const team = await Team.findByPk(idTeam);
+    const schema = Yup.object().shape({
+      name: Yup.string().min(4),
+      users: Yup.array(),
+    });
+
+    if (!(await schema.isValid(req.body))) {
+      return res.status(400).json({ error: 'Validation fails' });
+    }
+
     if (req.isAdmin !== true) {
       return res.status(400).json({ error: 'Is not admin' });
     }
+    const team = await Team.findByPk(idTeam);
 
     await team.update(data);
 
