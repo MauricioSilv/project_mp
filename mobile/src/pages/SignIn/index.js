@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import Background from '~/components/Background';
 import {
   Container,
@@ -11,7 +11,7 @@ import {
   TextCenter,
 } from './styles';
 
-export default function SignIn() {
+export default function SignIn({ navigation }) {
   return (
     <Background>
       <Container>
@@ -30,13 +30,19 @@ export default function SignIn() {
             secureTextEntry
             placeholder="Sua senha secreta"
           />
-          <SubmitButton onPress={() => {}}>Acessar</SubmitButton>
+          <SubmitButton onPress={() => {}}>Entrar</SubmitButton>
         </Form>
 
-        <SignLink onPress={() => {}}>
+        <SignLink onPress={() => navigation.navigate('SignUp')}>
           <SignLinkText>Criar cadastro</SignLinkText>
         </SignLink>
       </Container>
     </Background>
   );
 }
+
+SignIn.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
+};
