@@ -10,7 +10,7 @@ export function* signIn({ payload }) {
     email,
     password,
   });
-
+  console.tron.log(response.data);
   const { token, user } = response.data;
 
   yield put(signInSuccess(token, user));
