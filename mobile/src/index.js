@@ -11,7 +11,7 @@ export default function Index() {
   return (
     <Provider store={store}>
       <PersistGate persistor={persistor}>
-        <StatusBar barStyle="light-content" backgroundColor="#124676" />
+        <StatusBar barStyle="light-content" backgroundColor="#008099" />
         <App />
       </PersistGate>
     </Provider>
