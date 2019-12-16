@@ -29,11 +29,11 @@ module.exports = {
         allowNull: true,
       },
       latitude: {
-        type: Sequelize.STRING,
+        type: Sequelize.DECIMAL(9, 6),
         allowNull: false,
       },
       longitude: {
-        type: Sequelize.STRING,
+        type: Sequelize.DECIMAL(9, 6),
         allowNull: false,
       },
       id_type: {

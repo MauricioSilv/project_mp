@@ -30,7 +30,7 @@ export default (signedIn = false, isAdmin = false) =>
               activeTintColor: '#fff',
               inactiveTintColor: 'rgba(255,255,255,0.7)',
               style: {
-                backgroundColor: '#124676',
+                backgroundColor: '#3F2474',
               },
             },
           }

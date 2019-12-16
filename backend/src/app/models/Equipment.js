@@ -9,8 +9,8 @@ class Equipment extends Model {
         description: Sequelize.STRING,
         color_equipment: Sequelize.STRING,
         malfunction: Sequelize.STRING,
-        latitude: Sequelize.STRING,
-        longitude: Sequelize.STRING,
+        latitude: Sequelize.DECIMAL(9, 6),
+        longitude: Sequelize.DECIMAL(9, 6),
       },
       {
         sequelize,
