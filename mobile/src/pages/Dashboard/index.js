@@ -1,13 +1,58 @@
 import React from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+// import PropTypes f rom 'prop-types';
+import ListOptions from '~/components/ListOptions';
 import Background from '~/components/Background';
-import { Container, Title } from './styles';
+import { Container, Title, List } from './styles';
 
-export default function Dashboard() {
+const data = [
+  {
+    id: '0',
+    icon: 'person-add',
+    name: 'Adicionar usuarios',
+    action: 'addUser',
+  },
+  {
+    id: '1',
+    icon: 'add-box',
+    name: 'Nova operação',
+    action: 'Test2',
+  },
+  {
+    id: '2',
+    icon: 'more',
+    name: 'Tipos de equipamentos',
+    action: 'Test3',
+  },
+  {
+    id: '3',
+    icon: 'group-add',
+    name: 'Criar times',
+    action: 'Test4',
+  },
+  {
+    id: '4',
+    icon: 'list',
+    name: 'Criar etapas',
+    action: 'Test5',
+  },
+];
+export default function Dashboard({ navigation }) {
+  function handleNavigate(event) {
+    navigation.navigate(event.action);
+  }
+
   return (
     <Background>
       <Container>
         <Title>Dashboard</Title>
+        <List
+          data={data}
+          keyExtractor={item => String(item.id)}
+          renderItem={({ item }) => (
+            <ListOptions data={item} handleNavigation={handleNavigate} />
+          )}
+        />
       </Container>
     </Background>
   );

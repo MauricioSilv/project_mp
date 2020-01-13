@@ -1,4 +1,5 @@
 import React from 'react';
+import { StatusBar } from 'react-native';
 import { useSelector } from 'react-redux';
 import createRouter from './routes';
 
@@ -7,5 +8,10 @@ export default function App() {
   const isAdmin = useSelector(state => state.auth.is_admin);
   const Routes = createRouter(signed, isAdmin);
 
-  return <Routes />;
+  return (
+    <>
+      <StatusBar barStyle="light-content" backgroundColor="#008099" />
+      <Routes />
+    </>
+  );
 }
