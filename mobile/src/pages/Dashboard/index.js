@@ -16,25 +16,25 @@ const data = [
     id: '1',
     icon: 'add-box',
     name: 'Nova operação',
-    action: 'Test2',
+    action: 'newOperation',
   },
   {
     id: '2',
     icon: 'more',
     name: 'Tipos de equipamentos',
-    action: 'Test3',
+    action: 'typeEquipament',
   },
   {
     id: '3',
     icon: 'group-add',
     name: 'Criar times',
-    action: 'Test4',
+    action: 'newTeam',
   },
   {
     id: '4',
     icon: 'list',
     name: 'Criar etapas',
-    action: 'Test5',
+    action: 'newPhase',
   },
 ];
 export default function Dashboard({ navigation }) {

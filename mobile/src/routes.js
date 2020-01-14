@@ -8,6 +8,10 @@ import SignUp from '~/pages/SignUp';
 
 import Dashboard from '~/pages/Dashboard';
 import addUser from '~/pages/Dashboard/addUser';
+import newOperation from '~/pages/Dashboard/newOperation';
+import newPhase from '~/pages/Dashboard/newPhase';
+import newTeam from '~/pages/Dashboard/newTeam';
+import typeEquipament from '~/pages/Dashboard/typeEquipament';
 
 import Profile from '~/pages/Profile';
 
@@ -40,9 +44,81 @@ export default (signedIn = false, isAdmin = false) =>
             },
           }
         ),
-        New: createStackNavigator(
+        newUser: createStackNavigator(
           {
             addUser,
+          },
+          {
+            defaultNavigationOptions: {
+              headerTitleAlign: 'center',
+              headerBackTitleVisible: false,
+              headerStyle: {
+                backgroundColor: '#008099',
+              },
+              headerLeftContainerStyle: {
+                marginLeft: 20,
+              },
+              headerTintColor: '#fff',
+            },
+          }
+        ),
+        NewOperation: createStackNavigator(
+          {
+            newOperation,
+          },
+          {
+            defaultNavigationOptions: {
+              headerTitleAlign: 'center',
+              headerBackTitleVisible: false,
+              headerStyle: {
+                backgroundColor: '#008099',
+              },
+              headerLeftContainerStyle: {
+                marginLeft: 20,
+              },
+              headerTintColor: '#fff',
+            },
+          }
+        ),
+        NewPhase: createStackNavigator(
+          {
+            newPhase,
+          },
+          {
+            defaultNavigationOptions: {
+              headerTitleAlign: 'center',
+              headerBackTitleVisible: false,
+              headerStyle: {
+                backgroundColor: '#008099',
+              },
+              headerLeftContainerStyle: {
+                marginLeft: 20,
+              },
+              headerTintColor: '#fff',
+            },
+          }
+        ),
+        NewTeam: createStackNavigator(
+          {
+            newTeam,
+          },
+          {
+            defaultNavigationOptions: {
+              headerTitleAlign: 'center',
+              headerBackTitleVisible: false,
+              headerStyle: {
+                backgroundColor: '#008099',
+              },
+              headerLeftContainerStyle: {
+                marginLeft: 20,
+              },
+              headerTintColor: '#fff',
+            },
+          }
+        ),
+        TypeEquipment: createStackNavigator(
+          {
+            typeEquipament,
           },
           {
             defaultNavigationOptions: {
