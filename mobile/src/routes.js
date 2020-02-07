@@ -50,6 +50,7 @@ export default (signedIn = false, isAdmin = false) =>
           },
           {
             defaultNavigationOptions: {
+              headerTransparent: true,
               headerTitleAlign: 'center',
               headerBackTitleVisible: false,
               headerStyle: {
