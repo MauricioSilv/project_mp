@@ -10,7 +10,7 @@ export default function App() {
 
   return (
     <>
-      <StatusBar barStyle="light-content" backgroundColor="#008099" />
+      <StatusBar barStyle="light-content" backgroundColor="#00404D" />
       <Routes />
     </>
   );

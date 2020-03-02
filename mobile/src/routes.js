@@ -7,11 +7,11 @@ import SignIn from '~/pages/SignIn';
 import SignUp from '~/pages/SignUp';
 
 import Dashboard from '~/pages/Dashboard';
-import addUser from '~/pages/Dashboard/addUser';
+import addUser from '~/pages/Dashboard/Adduser';
 import newOperation from '~/pages/Dashboard/newOperation';
 import newPhase from '~/pages/Dashboard/newPhase';
 import newTeam from '~/pages/Dashboard/newTeam';
-import typeEquipament from '~/pages/Dashboard/typeEquipament';
+import typeEquipament from '~/pages/Dashboard/TypeEquipament';
 
 import Profile from '~/pages/Profile';
 
@@ -39,7 +39,7 @@ export default (signedIn = false, isAdmin = false) =>
               activeTintColor: '#fff',
               inactiveTintColor: 'rgba(255,255,255,0.7)',
               style: {
-                backgroundColor: '#3F2474',
+                backgroundColor: '#124676',
               },
             },
           }
@@ -69,6 +69,7 @@ export default (signedIn = false, isAdmin = false) =>
           },
           {
             defaultNavigationOptions: {
+              headerTransparent: true,
               headerTitleAlign: 'center',
               headerBackTitleVisible: false,
               headerStyle: {
@@ -87,6 +88,7 @@ export default (signedIn = false, isAdmin = false) =>
           },
           {
             defaultNavigationOptions: {
+              headerTransparent: true,
               headerTitleAlign: 'center',
               headerBackTitleVisible: false,
               headerStyle: {
@@ -105,6 +107,7 @@ export default (signedIn = false, isAdmin = false) =>
           },
           {
             defaultNavigationOptions: {
+              headerTransparent: true,
               headerTitleAlign: 'center',
               headerBackTitleVisible: false,
               headerStyle: {
@@ -123,6 +126,7 @@ export default (signedIn = false, isAdmin = false) =>
           },
           {
             defaultNavigationOptions: {
+              headerTransparent: true,
               headerTitleAlign: 'center',
               headerBackTitleVisible: false,
               headerStyle: {
